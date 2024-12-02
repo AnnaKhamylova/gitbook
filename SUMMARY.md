@@ -1,17 +1,9 @@
 # Table of contents
 
-* [Welcome](README.md)
+* [Before all](README.md)
 
-## Getting Started
+## Group 1
 
-* [Quickstart](getting-started/quickstart.md)
-* [Publish your docs](getting-started/publish-your-docs.md)
-
-## Basics
-
-* [Editor](basics/editor.md)
-* [Markdown](basics/markdown.md)
-* [Images & media](basics/images-and-media.md)
-* [Interactive blocks](basics/interactive-blocks.md)
-* [OpenAPI](basics/openapi.md)
-* [Integrations](basics/integrations.md)
+* [Task 1](group-1/task-1.md)
+* [Task 2](group-1/task-2.md)
+* [Task 3](group-1/task-3.md)
