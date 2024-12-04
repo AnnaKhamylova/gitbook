@@ -20,27 +20,23 @@ Notes before we start:
 
 Positive cases
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Send request with unmatching firstName and email</strong></td><td></td><td></td></tr><tr><td><strong>Send request with valid required fileds — without phone</strong></td><td></td><td></td></tr><tr><td><strong>Send request with unmatching secondName and email</strong></td><td></td><td></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Send request with new firstName and existant email</strong></td><td></td><td></td></tr><tr><td><strong>Send request with new secondName and existant email</strong></td><td></td><td></td></tr><tr><td>Send request with new phone and existant email</td><td></td><td></td></tr><tr><td><strong>Send request with new firstName, secondName, phone and existant email</strong></td><td></td><td></td></tr></tbody></table>
 
 **Negative cases**
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Send request with non-existant email</strong><br><br>I need access to GET method or DB.</td><td></td><td></td><td></td></tr><tr><td>Send request with invalid email</td><td></td><td></td><td></td></tr><tr><td>Send two requests with equal valid fields. <br><br><strong>Note: we should restrict updating profile if no data was changed. This restriction should be on frontend, so we never send two equal requests, but let's check it here anyway.</strong></td><td></td><td></td><td></td></tr><tr><td>Send request without any changes in profile</td><td><br>I need access to GET method or DB.</td><td><br><strong>Note: we should restrict updating profile if no data was changed. This restriction should be on frontend, so we never send a request without changes, but let's check it here anyway.</strong></td><td></td></tr><tr><td>Send request with valid email and firstName > 256 characters</td><td><p>Example of body:</p><pre><code><strong>{ 
-</strong>       "firstName": "namenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamevnamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamename",
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Send request with non-existant email</strong><br><br>I need access to GET method or DB.</td><td></td><td></td><td></td><td></td></tr><tr><td>Send request with invalid email</td><td></td><td></td><td></td><td></td></tr><tr><td>Send request without email</td><td></td><td></td><td></td><td></td></tr><tr><td>Send two requests with equal fields. </td><td></td><td><p>Request:</p><pre class="language-postman_json"><code class="lang-postman_json">{
+    "firstName": "name",
     "lastName": "name",
-    "email": "mailmai.ru"
+    "email": "mailmail@mail.ru"
 }
-</code></pre></td><td><p>What do we get in response:<br>200 OK </p><pre class="language-json"><code class="lang-json">{
+</code></pre></td><td>Expected response: ??? depends on requirements</td><td>If we accept that this is bug, severity would be low or medium — really depends</td></tr><tr><td>Send request without any changes in profile</td><td><strong>Note: we should restrict updating profile if no data was changed. This restriction should be on frontend, so we never send a request without changes, but let's check it here anyway</strong></td><td><p>Request:</p><pre class="language-postman_json"><code class="lang-postman_json">{
+    "firstName": "name"//the same as in DB,
+    "lastName": "name"// the same as in DB,
+    "email": "mailmail@mail.ru"
+}
+</code></pre></td><td><p>Response:</p><pre class="language-json"><code class="lang-json">{
     "success": true,
     "message": "Profile saved successfully"
 }
-</code></pre></td><td>What do we expect in response: status 4xx and message "too many character in firstName".</td></tr><tr><td>Send request with valid email and lastName > 256 characters</td><td></td><td></td><td></td></tr><tr><td>Send request without email</td><td></td><td></td><td></td></tr><tr><td>Send request without firstName</td><td></td><td></td><td></td></tr><tr><td>Send request without lastName</td><td></td><td></td><td></td></tr><tr><td>Send request with valid fields + invalid phone </td><td></td><td></td><td></td></tr><tr><td>Send request </td><td></td><td></td><td></td></tr></tbody></table>
+</code></pre></td><td>Severity — low</td></tr><tr><td>Send request with valid email and firstName > 256 characters</td><td></td><td>Severity — low</td><td></td><td></td></tr><tr><td>Send request with valid email and lastName > 256 characters</td><td></td><td>Severity — low</td><td></td><td></td></tr><tr><td>Send request with empty firstName and lastName</td><td></td><td></td><td></td><td></td></tr><tr><td>Send request without firstName</td><td></td><td></td><td></td><td></td></tr><tr><td>Send request without lastName</td><td></td><td></td><td></td><td></td></tr><tr><td>Send request with valid fields + invalid phone </td><td></td><td></td><td></td><td></td></tr><tr><td>Send request with two fields firstName</td><td></td><td></td><td></td><td></td></tr><tr><td>Send requests with letter in Russian layout in the name of field</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
 
-1. **Send request with all fields**. We use valid fields' values — since I do not know the requerements, let's use common values.
-2. Send request with required fileds — firstName, lastName, email. Email is not changed.&#x20;
-3. Send two&#x20;
-
-Notes
-
-Negative cases
-
-1. Send two requests with equal valide fields.&#x20;
